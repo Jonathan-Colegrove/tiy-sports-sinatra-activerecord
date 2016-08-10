@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>TIY Sports - Team</title>
+    <title>TIY Sports - Team Update</title>
   </head>
   <body>
     <% if @team %>
@@ -15,19 +15,6 @@
     <% else %>
       <h1>No Team Found</h1>
     <% end %>
-
-    <form action="/teams/team_update" method="post">
-      <input type="text" name="name">
-      <input type="submit" value="Update Team">
-    </form>
-
-    <br>
-
-    <form action="/teams/delete/<%=@team.id %>" method="post">
-      <input type="submit" value="Delete Team">
-    </form>
-    
-    <br>
 
     <a href="/">Home</a>
   </body>

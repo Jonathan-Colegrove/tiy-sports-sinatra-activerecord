@@ -33,6 +33,10 @@ get '/players/new' do
   erb :player_form
 end
 
+get '/players/update' do
+  erb :player_update
+end
+
 post '/players/create' do
   # name = params["name"]
   # age = params["age"]
@@ -60,6 +64,18 @@ post '/players/search' do
   end
 end
 
+post '/players/delete/:id' do
+  @id = params["id"]
+  player = Player.find_by(id: @id)
+
+  if player
+    player.delete
+    redirect "/"
+  else
+    erb :not_found
+  end
+end
+
 get '/players/:id' do
   player_id = params[:id]
   @player = Player.find_by(id: player_id)
@@ -69,6 +85,10 @@ end
 
 get '/teams/new' do
   erb :team_form
+end
+
+get '/teams/update' do
+  erb :team_update
 end
 
 post '/teams/create' do
@@ -87,29 +107,20 @@ post '/teams/search' do
   end
 end
 
-get '/teams/:id' do
-  team_id = params[:id]
-  @team = Team.find_by(id: team_id)
-
-  erb :team_details
-end
-
-post '/players/delete' do
+post '/teams/team_update' do
   @name = params["name"]
-  player = Player.find_by(name: @name)
 
-  if player
-    player.delete
-    redirect "/"
+  team = Team.where("name like '%#{@name}%'").first
+  if team
+    redirect "/teams/#{team.id}"
   else
-    erb :not_found
+    erb :team_not_found
   end
 end
 
-# TEST CODE #
-post '/teams/delete' do
-  @name = params["name"]
-  team = Team.find_by(name: @name)
+post '/teams/delete/:id' do
+  @id = params["id"]
+  team = Team.find_by(id: @id)
 
   if team
     team.delete
@@ -119,4 +130,9 @@ post '/teams/delete' do
   end
 end
 
-#
+get '/teams/:id' do
+  team_id = params[:id]
+  @team = Team.find_by(id: team_id)
+
+  erb :team_details
+end
