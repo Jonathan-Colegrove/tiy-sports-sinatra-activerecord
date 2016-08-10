@@ -65,14 +65,32 @@ get '/players/:id' do
   erb :player_details
 end
 
+get '/teams/new' do
+  erb :team_form
+end
+
+post '/teams/create' do
+  team = Team.create(params)
+  redirect "/teams/#{team.id}"
+end
+
+post '/teams/search' do
+  @name = params["name"]
+
+  team = Team.where("name like '%#{@name}%'").first
+  if team
+    redirect "/teams/#{team.id}"
+  else
+    erb :team_not_found
+  end
+end
+
 get '/teams/:id' do
   team_id = params[:id]
   @team = Team.find_by(id: team_id)
 
   erb :team_details
 end
-
-
 
 
 #

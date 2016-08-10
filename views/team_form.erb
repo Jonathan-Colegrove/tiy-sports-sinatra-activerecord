@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>TIY Sports - Team</title>
+    <style>
+    ul {
+      list-style: none;
+    }
+    </style>
+  </head>
+  <body>
+    <form action="/teams/create" method="post">
+      <ul>
+        <li>
+          <label for="name">Name</label>
+          <input type="text" name="name">
+        </li>
+
+        <li>
+          <label for="mascot">Mascot</label>
+          <input type="text" name="mascot">
+        </li>
+
+        <li>
+          <label for="sport">Sport</label>
+          <input type="text" name="sport">
+        </li>
+
+        <li>
+          <input type="submit" value="Create">
+        </li>
+      </ul>
+    </form>
+
+    <a href="/">Home</a>
+  </body>
+</html>
