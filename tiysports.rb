@@ -2,6 +2,8 @@ require 'sqlite3'
 require 'active_record'
 require 'sinatra'
 
+require 'sinatra/reloader' if development?
+
 ActiveRecord::Base.logger = Logger.new(STDOUT)
 ActiveRecord::Base.establish_connection(
   adapter: "sqlite3",
@@ -92,5 +94,29 @@ get '/teams/:id' do
   erb :team_details
 end
 
+post '/players/delete' do
+  @name = params["name"]
+  player = Player.find_by(name: @name)
+
+  if player
+    player.delete
+    redirect "/"
+  else
+    erb :not_found
+  end
+end
+
+# TEST CODE #
+post '/teams/delete' do
+  @name = params["name"]
+  team = Team.find_by(name: @name)
+
+  if team
+    team.delete
+    redirect "/"
+  else
+    erb :team_not_found
+  end
+end
 
 #

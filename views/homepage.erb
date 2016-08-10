@@ -22,8 +22,16 @@
       <input type="submit" value="Search">
     </form>
 
+<!-- Test Code -->
+<br>
+<br>
+    <form action="/players/delete" method="post">
+      <input type="text" name="name" value="">
+      <input type="submit" value="Delete Player">
+    </form>
+
     <!-- List of all of the teams here -->
-    <h2>Teams</h2>
+    <h2>Teams - Mascot</h2>
     <ul>
     <% @teams.each do |team| %>
       <li><a href="/teams/<%= team.id %>"><%= team.name %> - <%= team.mascot %></a></li>
@@ -35,5 +43,12 @@
       <input type="text" name="name" value="">
       <input type="submit" value="Search">
     </form>
+
+    <br>
+    <br>
+        <form action="/teams/delete" method="post">
+          <input type="text" name="name" value="">
+          <input type="submit" value="Delete Team">
+        </form>
   </body>
 </html>
