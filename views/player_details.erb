@@ -15,22 +15,46 @@
           <li>Shirt Size: <%= @player.shirt_size %></li>
           <li>Birthday: <%= @player.birthday %></li>
         </ul>
+
+        <h1>Updating Player Info</h1>
+        <form action="/players/update/<%= @player.id %>" method="post">
+          <ul>
+            <li>
+              <label for="name">Name</label>
+              <input type="text" name="name">
+            </li>
+
+            <li>
+              <label for="age">Age</label>
+              <input type="text" name="age">
+            </li>
+
+            <li>
+              <label for="shirt_size">Shirt Size</label>
+              <input type="text" name="shirt_size">
+            </li>
+
+              <li>
+                <label for="birthday">Birthday</label>
+                <input type="text" name="birthday">
+              </li>
+
+            <li>
+              <input type="submit" value="Update Player">
+            </li>
+          </ul>
+        </form>
+        <br>
+
+        <form action="/players/delete/<%=@player.id %>" method="post">
+          <input type="submit" value="Delete Player">
+        </form>
+
+        <br>
+
       <% else %>
         <h1>No Player Found</h1>
       <% end %>
-
-      <form action="/players/player_update" method="post">
-        <input type="text" name="name">
-        <input type="submit" value="Update Player">
-      </form>
-
-      <br>
-
-      <form action="/players/delete/<%=@player.id %>" method="post">
-        <input type="submit" value="Delete Player">
-      </form>
-
-      <br>
 
       <a href="/">Home</a>
     </div>

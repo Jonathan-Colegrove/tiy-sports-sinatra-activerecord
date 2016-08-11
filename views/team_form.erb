@@ -7,29 +7,31 @@
   </head>
   <body>
     <h1>Add a Team</h1>
-    <form action="/teams/create" method="post">
-      <ul>
-        <li>
-          <label for="name">Name</label>
-          <input type="text" name="name">
-        </li>
+    <div class="box">
+      <form action="/teams/create" method="post">
+        <ul>
+          <li>
+            <label for="name">Name</label>
+            <input type="text" name="name">
+          </li>
 
-        <li>
-          <label for="mascot">Mascot</label>
-          <input type="text" name="mascot">
-        </li>
+          <li>
+            <label for="mascot">Mascot</label>
+            <input type="text" name="mascot">
+          </li>
 
-        <li>
-          <label for="sport">Sport</label>
-          <input type="text" name="sport">
-        </li>
+          <li>
+            <label for="sport">Sport</label>
+            <input type="text" name="sport">
+          </li>
 
-        <li>
-          <input type="submit" value="Create">
-        </li>
-      </ul>
-    </form>
+          <li>
+            <input type="submit" value="Create">
+          </li>
+        </ul>
+      </form>
 
-    <a href="/">Home</a>
+      <a href="/">Home</a>
+    </div>
   </body>
 </html>

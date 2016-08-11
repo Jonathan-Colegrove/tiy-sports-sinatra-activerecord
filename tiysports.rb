@@ -50,6 +50,17 @@ post '/players/search' do
   end
 end
 
+post '/players/update/:id' do
+  id = params["id"]
+  player = Player.find_by(id: id)
+  if player
+    player.update_attributes(params)
+    redirect "/players/#{player.id}"
+  else
+    redirect "/"
+  end
+end
+
 post '/players/delete/:id' do
   @id = params["id"]
   player = Player.find_by(id: @id)
