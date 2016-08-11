@@ -89,22 +89,15 @@ post '/teams/search' do
   end
 end
 
-post '/teams/team_details/:id' do
-  @id = params["id"]
-
-  team = Team.find_by(id: @id)
+post '/teams/update/:id' do
+  id = params["id"]
+  team = Team.find_by(id: id)
   if team
-    # redirect "/teams/#{team.id}"
-    redirect "/teams/team_details/:id"
+    team.update_attributes(params)
+    redirect "/teams/#{team.id}"
   else
-    erb :team_not_found
+    redirect "/"
   end
-end
-
-post '/teams/update' do
-  team = Team.update(params)
-  # redirect "/teams/#{team.id}"
-  redirect "/teams/team_details/:id"
 end
 
 post '/teams/delete/:id' do

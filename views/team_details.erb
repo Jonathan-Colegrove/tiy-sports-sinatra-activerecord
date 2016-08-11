@@ -16,7 +16,7 @@
         </ul>
 
       <h1>Updating Team Info</h1>
-      <form action="/teams/update" method="post">
+      <form action="/teams/update/:id" method="post">
         <ul>
           <li>
             <label for="name">Name</label>
@@ -37,7 +37,7 @@
             <input type="submit" value="Update Team">
           </li>
         </ul>
-
+      </form>
       <br>
 
       <form action="/teams/delete/<%=@team.id %>" method="post">
@@ -45,7 +45,7 @@
       </form>
 
       <br>
-      
+
       <% else %>
         <h1>No Team Found</h1>
       <% end %>

@@ -5,18 +5,16 @@ body {
   align-items: center;
 }
 
-.container {
+.container, .box {
   background-color: #84cfd2;
   width: 75vw;
   padding: 15px;
-  display: flex;
-  justify-content: space-around;
+  box-shadow: 3px 3px 0 rgba(51, 51, 51, 0.8);
 }
 
-.box {
-  background-color: #84cfd2;
-  width: 75vw;
-  padding: 15px;
+.container {
+  display: flex;
+  justify-content: space-around;
 }
 
 h1 {
