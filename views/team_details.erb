@@ -3,32 +3,54 @@
   <head>
     <meta charset="utf-8">
     <title>TIY Sports - Team</title>
+    <link rel="stylesheet" href="/css/main.css">
   </head>
   <body>
-    <% if @team %>
-      <h1>Team Details</h1>
-      <ul>
-        <li>Name: <%= @team.name %></li>
-        <li>Mascot: <%= @team.mascot %></li>
-        <li>Sport: <%= @team.sport %></li>
-      </ul>
-    <% else %>
-      <h1>No Team Found</h1>
-    <% end %>
+    <h1>Team Details</h1>
+    <div class="box">
+      <% if @team %>
+        <ul>
+          <li>Name: <%= @team.name %></li>
+          <li>Mascot: <%= @team.mascot %></li>
+          <li>Sport: <%= @team.sport %></li>
+        </ul>
 
-    <form action="/teams/team_update" method="post">
-      <input type="text" name="name">
-      <input type="submit" value="Update Team">
-    </form>
+      <h1>Updating Team Info</h1>
+      <form action="/teams/update" method="post">
+        <ul>
+          <li>
+            <label for="name">Name</label>
+            <input type="text" name="name">
+          </li>
 
-    <br>
+          <li>
+            <label for="mascot">Mascot</label>
+            <input type="text" name="mascot">
+          </li>
 
-    <form action="/teams/delete/<%=@team.id %>" method="post">
-      <input type="submit" value="Delete Team">
-    </form>
-    
-    <br>
+          <li>
+            <label for="sport">Sport</label>
+            <input type="text" name="sport">
+          </li>
 
-    <a href="/">Home</a>
+          <li>
+            <input type="submit" value="Update Team">
+          </li>
+        </ul>
+
+      <br>
+
+      <form action="/teams/delete/<%=@team.id %>" method="post">
+        <input type="submit" value="Delete Team">
+      </form>
+
+      <br>
+      
+      <% else %>
+        <h1>No Team Found</h1>
+      <% end %>
+
+      <a href="/">Home</a>
+    </div>
   </body>
 </html>

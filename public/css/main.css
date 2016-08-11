@@ -1,0 +1,24 @@
+body {
+  background-color: #5b9292;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  background-color: #84cfd2;
+  width: 75vw;
+  padding: 15px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.box {
+  background-color: #84cfd2;
+  width: 75vw;
+  padding: 15px;
+}
+
+h1 {
+  color: white;
+}

@@ -33,21 +33,7 @@ get '/players/new' do
   erb :player_form
 end
 
-get '/players/update' do
-  erb :player_update
-end
-
 post '/players/create' do
-  # name = params["name"]
-  # age = params["age"]
-  # shirt_size = params["shirt_size"]
-  # birthday = params["birthday"]
-  #
-  # person = Player.create(name: name, age: age, shirt_size: shirt_size, birthday: birthday)
-
-  # Params is already what I'm expecting (a hash with keys
-  # as the names of my colums and the values being what was
-  # entered on the form)
   person = Player.create(params)
 
   redirect "/players/#{person.id}"
@@ -87,10 +73,6 @@ get '/teams/new' do
   erb :team_form
 end
 
-get '/teams/update' do
-  erb :team_update
-end
-
 post '/teams/create' do
   team = Team.create(params)
   redirect "/teams/#{team.id}"
@@ -107,15 +89,22 @@ post '/teams/search' do
   end
 end
 
-post '/teams/team_update' do
-  @name = params["name"]
+post '/teams/team_details/:id' do
+  @id = params["id"]
 
-  team = Team.where("name like '%#{@name}%'").first
+  team = Team.find_by(id: @id)
   if team
-    redirect "/teams/#{team.id}"
+    # redirect "/teams/#{team.id}"
+    redirect "/teams/team_details/:id"
   else
     erb :team_not_found
   end
+end
+
+post '/teams/update' do
+  team = Team.update(params)
+  # redirect "/teams/#{team.id}"
+  redirect "/teams/team_details/:id"
 end
 
 post '/teams/delete/:id' do

@@ -3,38 +3,44 @@
   <head>
     <meta charset="utf-8">
     <title>TIY Sports</title>
+    <link rel="stylesheet" href="/css/main.css">
   </head>
   <body>
     <h1>Welcome to TIY Sports</h1>
 
-    <!-- List of all the players here -->
-    <h2>Players</h2>
-    <ul>
-    <% @players.each do |player| %>
-      <li><a href="/players/<%= player.id %>"><%= player.name %></a></li>
-    <% end %>
-    </ul>
+    <div class="container">
 
-    <a href="/players/new">Add Player</a>
+      <div class="left">
+        <h2>Players</h2>
+        <ul>
+        <% @players.each do |player| %>
+          <li><a href="/players/<%= player.id %>"><%= player.name %></a></li>
+        <% end %>
+        </ul>
 
-    <form action="/players/search" method="post">
-      <input type="text" name="name" value="">
-      <input type="submit" value="Search">
-    </form>
+        <a href="/players/new">Add Player</a>
 
-    <!-- List of all of the teams here -->
-    <h2>Teams - Mascot</h2>
-    <ul>
-    <% @teams.each do |team| %>
-      <li><a href="/teams/<%= team.id %>"><%= team.name %> - <%= team.mascot %></a></li>
-    <% end %>
-    </ul>
-    <a href="/teams/new">Add Team</a>
+        <form action="/players/search" method="post">
+          <input type="text" name="name">
+          <input type="submit" value="Search Players">
+        </form>
+      </div>
+      
+      <div class="right">
+        <h2>Teams - Mascot</h2>
+        <ul>
+        <% @teams.each do |team| %>
+          <li><a href="/teams/<%= team.id %>"><%= team.name %> - <%= team.mascot %></a></li>
+        <% end %>
+        </ul>
+        <a href="/teams/new">Add Team</a>
 
-    <form action="/teams/search" method="post">
-      <input type="text" name="name" value="">
-      <input type="submit" value="Search">
-    </form>
+        <form action="/teams/search" method="post">
+          <input type="text" name="name">
+          <input type="submit" value="Search Teams">
+        </form>
+      </div>
 
+    </div>
   </body>
 </html>
